@@ -15,6 +15,7 @@
 - 视频任务：异步 job（提交 -> 轮询 -> 完成返回视频）
 - 安全控制：`X-Access-Token`（用于 `/api/invoke` 与 `/api/upload`）
 - 日志：写入 `invoke_logs`
+- 调试日志：标准输出自动包含 `request_id`、阶段进度、耗时与错误堆栈
 
 ## 2. 工程结构
 
@@ -101,6 +102,7 @@ cp .env.example .env
 - `ACCESS_TOKEN`
 - `MYSQL_ROOT_PASSWORD`
 - `MYSQL_PASSWORD`
+- `LOG_LEVEL`（建议开发环境设为 `DEBUG`）
 - 如需图片 URL 绝对路径，设置 `PUBLIC_BASE_URL=https://your-domain.com`
 
 3. 启动：
@@ -197,3 +199,4 @@ docker compose up -d --build
 - `401 Invalid X-Access-Token`：前端口令与 `.env` 中 `ACCESS_TOKEN` 不一致。
 - 图片无法访问：确认 `uploads_data` 卷已挂载到 nginx 的 `/uploads`。
 - 模型调用失败：检查 `models` 表中目标模型的 `base_url/endpoint_path/auth` 配置。
+- 追踪调用进度：`docker compose logs -f backend`，按 `request_id` 过滤，查看 `invoke.start -> invoke.adapter_selected -> invoke.success`；视频任务看 `video_job.progress`、`video_job.completed` 或 `video_job.exception`。

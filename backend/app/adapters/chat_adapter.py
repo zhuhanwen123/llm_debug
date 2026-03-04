@@ -20,9 +20,16 @@ class ChatAdapter(BaseAdapter):
 
         payload = {
             "model": self.model.model_code,
-            "system_prompt": system_prompt,
-            "user_message": user_message,
-            "params": params,
+            "messages": [
+            {
+                "role": "system",
+                "content": system_prompt,
+            },
+            {
+                "role": "user",
+                "content": user_message,
+            }
+            ]
         }
         data = await self._post_json(payload)
 
