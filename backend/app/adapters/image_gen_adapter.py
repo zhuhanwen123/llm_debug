@@ -46,7 +46,6 @@ class ImageGenAdapter(BaseAdapter):
             "prompt": user_message,
             "system_prompt": system_prompt,
             "image": uploaded_image_urls,
-            "image_urls": uploaded_image_urls,
             "params": params,
         }
         data = await self._post_json(payload)
