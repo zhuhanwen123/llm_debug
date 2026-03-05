@@ -30,6 +30,13 @@ class Settings(BaseSettings):
 
     default_mock_video_url: str = "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
 
+    oss_endpoint: str = "test"
+    oss_bucket: str = "test"
+    oss_access_key_id: str = "test"
+    oss_access_key_secret: str = "test"
+    oss_prefix: str = "test"
+    oss_public_base_url: str = "test"
+
     @property
     def sqlalchemy_database_uri(self) -> str:
         return (
