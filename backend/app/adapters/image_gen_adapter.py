@@ -1,12 +1,12 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 from uuid import uuid4
 
 from app.adapters.base import BaseAdapter
-from app.core.config import get_settings
 from app.db.models import ModelConfig
 from app.utils.file_store import save_base64_image
 
@@ -14,15 +14,14 @@ from app.utils.file_store import save_base64_image
 class ImageGenAdapter(BaseAdapter):
     def __init__(self, model: ModelConfig):
         super().__init__(model)
-        settings = get_settings()
-        # OSS config is loaded from .env through Settings.
+        # Read OSS config directly from environment variables (.env via docker-compose env_file).
         self.oss_config = {
-            "endpoint": settings.oss_endpoint,
-            "bucket": settings.oss_bucket,
-            "access_key_id": settings.oss_access_key_id,
-            "access_key_secret": settings.oss_access_key_secret,
-            "prefix": settings.oss_prefix,
-            "public_base_url": settings.oss_public_base_url,
+            "endpoint": os.getenv("OSS_ENDPOINT", "test"),
+            "bucket": os.getenv("OSS_BUCKET", "test"),
+            "access_key_id": os.getenv("OSS_ACCESS_KEY_ID", "test"),
+            "access_key_secret": os.getenv("OSS_ACCESS_KEY_SECRET", "test"),
+            "prefix": os.getenv("OSS_PREFIX", "test"),
+            "public_base_url": os.getenv("OSS_PUBLIC_BASE_URL", "test"),
         }
 
     async def invoke(
