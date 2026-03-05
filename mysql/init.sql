@@ -53,35 +53,35 @@ INSERT INTO models (
   is_enabled, sort_order, capabilities, default_params
 ) VALUES
   (
-    1, 'qwen3-max', 'chat', 'Qwen', 'mock-chat', "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions", "sk-c8a3217c817e4942b7e4cafc8a805c9b",
+    1, 'qwen3-max', 'chat', 'Qwen', 'qwen3-max', "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions", "sk-c8a3217c817e4942b7e4cafc8a805c9b",
     'none', NULL, NULL, 60000,
     1, 10,
     JSON_OBJECT('supports_text', true),
     JSON_OBJECT('temperature', 0.7)
   ),
   (
-    2, 'doubao-seed-1-6-251015', 'vision', 'Doubao', 'mock-vision', "https://ark.cn-beijing.volces.com/api/v3/chat/completions", "7480055d-8747-4774-9e1c-49be5f264873",
+    2, 'doubao-seed-1-6-251015', 'vision', 'Doubao', 'doubao-seed-1-6-251015', "https://ark.cn-beijing.volces.com/api/v3/chat/completions", "7480055d-8747-4774-9e1c-49be5f264873",
     'none', NULL, NULL, 60000,
     1, 20,
     JSON_OBJECT('supports_images', true, 'supports_text', true),
     JSON_OBJECT('temperature', 0.2)
   ),
   (
-    3, 'doubao-seedream-4-5-251128', 'image_gen', 'Doubao', 'mock-image', "https://ark.cn-beijing.volces.com/api/v3/images/generations", "7480055d-8747-4774-9e1c-49be5f264873",
+    3, 'doubao-seedream-4-5-251128', 'image_gen', 'Doubao', 'doubao-seedream-4-5-251128', "https://ark.cn-beijing.volces.com/api/v3/images/generations", "7480055d-8747-4774-9e1c-49be5f264873",
     'none', NULL, NULL, 90000,
     1, 30,
     JSON_OBJECT('image_output', true),
     JSON_OBJECT('size', '1024x1024')
   ),
   (
-    4, 'doubao-seedance-1-5-pro-251215', 'video_gen', 'Doubao', 'mock-video', "https://ark.cn-beijing.volces.com/api/v3/contents/generations/tasks", "7480055d-8747-4774-9e1c-49be5f264873",
+    4, 'doubao-seedance-1-5-pro-251215', 'video_gen', 'Doubao', 'doubao-seedance-1-5-pro-251215', "https://ark.cn-beijing.volces.com/api/v3/contents/generations/tasks", "7480055d-8747-4774-9e1c-49be5f264873",
     'none', NULL, NULL, 120000,
     1, 40,
     JSON_OBJECT('async_job', true, 'video_output', true),
     JSON_OBJECT('duration_seconds', 5)
   ),
   (
-    5, 'gemini-3-pro-image-preview', 'overseas_image_gen', 'laozhang', 'mock-overseas-image', "https://api.laozhang.ai/v1beta/models/gemini-3-pro-image-preview:generateContent", "sk-3Ofgxw6KPpXoSthEB058B9Eb969542909644D2A606A8D40d",
+    5, 'gemini-3-pro-image-preview', 'overseas_image_gen', 'laozhang', 'gemini-3-pro-image-preview', "https://api.laozhang.ai/v1beta/models/gemini-3-pro-image-preview:generateContent", "sk-3Ofgxw6KPpXoSthEB058B9Eb969542909644D2A606A8D40d",
     'none', NULL, NULL, 90000,
     1, 50,
     JSON_OBJECT('image_output', true, 'overseas', true),
